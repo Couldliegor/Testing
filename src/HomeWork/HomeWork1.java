@@ -15,7 +15,7 @@ public class HomeWork1 {
 Stream<? extends T> stream,
 Comparator<? super T> order,
 BiConsumer<? super T, ? super T> minMaxConsumer*/
-    public <T> void finMaxMin(Stream<? extends T> stream,
+    public <T> void findMaxMin(Stream<? extends T> stream,
                               Comparator<? super T> order,
                               BiConsumer<? super T, ? super T> minMaxConsumer) {
         List<T> items = stream.sorted(order).collect(Collectors.toList()); //создаем условный список для работы с принимаемыми параметрами
@@ -31,9 +31,10 @@ BiConsumer<? super T, ? super T> minMaxConsumer*/
         Реализуйте метод, который принимает на вход
 Список целых чисел и определяет количество четных и выводит их в консоль.
 Решать именно с применением Stream API*/
-    public void Predicate(List<Integer> ints) {
-        ints.stream()
+    public void predicate(List<Integer> ints) {
+        System.out.println("Кол-во четных чисел: " + ints.stream()
                 .filter(x -> x % 2 == 0)
-                .forEach(System.out::println);
+                .peek(x-> System.out.print("Четное: " + x + "; "))
+                .count());
     }
 }
